@@ -1,0 +1,13 @@
+version: 2.1
+orbs:
+  go: circleci/go@1.10.0
+
+jobs:
+  run-code: 
+    executor:
+      name: go/default # Use the default executor from the orb
+      tag: '1.21.5' # Specify a version tag
+    steps:
+      - checkout # checkout source code
+      - run: 
+          command: go run main.go
