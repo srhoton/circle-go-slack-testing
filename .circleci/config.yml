@@ -11,3 +11,9 @@ jobs:
       - checkout # checkout source code
       - run: 
           command: go run main.go
+
+workflows:
+  run-code:
+    jobs:
+      - run-code
+
