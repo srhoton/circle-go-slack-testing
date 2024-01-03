@@ -1,6 +1,7 @@
 version: 2.1
 orbs:
   go: circleci/go@1.10.0
+  slack: circleci/slack@4.12.5
 
 jobs:
   run-code: 
@@ -11,9 +12,15 @@ jobs:
       - checkout # checkout source code
       - run: 
           command: go run main.go
+      - slack/notify:
+          event: fail
+          template: basic_fail_1
+          mentions: '@channel'
+          channel: '#table-droppers'
 
 workflows:
   run-code:
     jobs:
       - run-code
+          context: slack-testing
 
