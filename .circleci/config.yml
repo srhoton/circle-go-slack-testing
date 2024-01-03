@@ -21,6 +21,6 @@ jobs:
 workflows:
   run-code:
     jobs:
-      - run-code
+      - run-code:
           context: slack-testing
 
