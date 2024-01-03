@@ -19,8 +19,14 @@ jobs:
           channel: '#table-droppers'
 
 workflows:
-  run-code:
+  daily-run-workflow:
+    triggers:
+      - schedule:
+          cron: "*/5 * * * *"
+          filters:
+            branches:
+              only:
+                - main
     jobs:
       - run-code:
           context: slack-testing
-
